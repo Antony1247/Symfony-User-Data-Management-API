@@ -157,6 +157,4 @@ Jane Smith,jane.smith@example.com,janesmith,456 Elm St,ADMIN
 - The system sends an asynchronous email notification to each user upon successful data storage.
 - Ensure email credentials are configured in the `.env` file for proper functioning.
 
-## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
