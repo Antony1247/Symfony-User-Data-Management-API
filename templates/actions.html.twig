@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Data Management</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7f9;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        h1 {
+            font-size: 2em;
+            color: #4a90e2;
+            margin-bottom: 20px;
+        }
+
+        form, .controls {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+            margin: 20px 0;
+        }
+
+        h2 {
+            font-size: 1.5em;
+            color: #333;
+        }
+
+        input[type="file"] {
+            padding: 10px;
+            margin-top: 10px;
+            width: 100%;
+            font-size: 1em;
+        }
+
+        button {
+            background-color: #4a90e2;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+            margin-top: 10px;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #357ab8;
+        }
+
+        #userList ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        #userList li {
+            background: #fff;
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 5px;
+            border-radius: 4px;
+        }
+
+        #viewUsers {
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <h1>User Data Management</h1>
+
+    <form id="uploadForm" enctype="multipart/form-data">
+        <h2>Upload Data</h2>
+        <input type="file" name="file" accept=".csv" required>
+        <button type="submit">Upload CSV</button>
+    </form>
+
+    <div class="controls">
+            <a href="/users">
+      <button id="viewUsers">View Users</button>
+    </a>
+        <div id="userList"></div>
+
+        <button id="backupDatabase">Backup Database</button>
+        <button id="restoreDatabase">Restore Database</button>
+    </div>
+
+    <script>
+        document.getElementById('uploadForm').onsubmit = async function(event) {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            const response = await fetch('/api/upload', { method: 'POST', body: formData });
+            const data = await response.json();
+            alert(data.message);
+        };
+
+        document.getElementById('viewUsers').onclick = async function() {
+            const response = await fetch('/api/users');
+            const users = await response.json();
+            let userList = '<ul>';
+            users.forEach(user => {
+                userList += `<li><strong>${user.name}</strong> - ${user.email} - ${user.role}</li>`;
+            });
+            userList += '</ul>';
+            document.getElementById('userList').innerHTML = userList;
+        };
+
+        document.getElementById('backupDatabase').onclick = async function() {
+            const response = await fetch('/api/backup');
+            const data = await response.json();
+            alert(data.message);
+        };
+
+        document.getElementById('restoreDatabase').onclick = async function() {
+            const response = await fetch('/api/restore', { method: 'POST' });
+            const data = await response.json();
+            alert(data.message);
+        };
+    </script>
+</body>
+</html>
+

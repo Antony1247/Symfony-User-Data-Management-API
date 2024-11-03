@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fb;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #4a90e2;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        ul#userList {
+            list-style: none;
+            padding: 0;
+            width: 100%;
+            max-width: 500px;
+        }
+
+        ul#userList li {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        ul#userList li span {
+            font-weight: bold;
+            color: #333;
+        }
+
+        a {
+            text-decoration: none;
+            color: #4a90e2;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        a:hover {
+            color: #357ab8;
+        }
+    </style>
+</head>
+<body>
+    <h1>User List</h1>
+    <ul id="userList">
+        {% for user in users %}
+            <li>
+                <span>{{ user.name }}</span> - {{ user.email }} - <em>{{ user.role }}</em>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="/manage">Back to Home</a>
+</body>
+</html>
