@@ -54,19 +54,11 @@ Laura Clark,laura.c@example.com,lauraclark,707 Cherry St,ADMIN
   - Parses the uploaded `data.csv` file.
   - Saves each user record to the database.
   - Sends an asynchronous email to each user upon successful storage.
-- **Example Request**:
-  ```bash
-  curl -X POST -F 'file=@data.csv' http://localhost:8000/api/upload
-  ```
 
 ### View Data API
 
 - **Endpoint**: `GET /api/users`
 - **Description**: Allows viewing of all user data stored in the database.
-- **Example Request**:
-  ```bash
-  curl -X GET http://localhost:8000/api/users
-  ```
 
 ### Backup Database API
 
@@ -74,10 +66,6 @@ Laura Clark,laura.c@example.com,lauraclark,707 Cherry St,ADMIN
 - **Description**: Allows an admin to take a backup of the database.
 - **Functionality**:
   - Generates a backup file (e.g., `backup.sql`) containing the current state of the database.
-- **Example Request**:
-  ```bash
-  curl -X GET http://localhost:8000/api/backup
-  ```
 
 ### Restore Database API
 
@@ -85,10 +73,6 @@ Laura Clark,laura.c@example.com,lauraclark,707 Cherry St,ADMIN
 - **Description**: Allows an admin to restore the database from the backup file.
 - **Functionality**:
   - Restores the database using the provided backup file.
-- **Example Request**:
-  ```bash
-  curl -X POST -F 'file=@backup.sql' http://localhost:8000/api/restore
-  ```
 
 ## Installation
 
