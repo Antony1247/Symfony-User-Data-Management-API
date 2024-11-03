@@ -4,7 +4,7 @@
 
 #VIDEO EXPLANATION:
 
-https://drive.google.com/drive/folders/1gCFSq_IIuOossvFgJs7BuYINdKMFrQDM?usp=drive_link
+https://drive.google.com/drive/folders/1gCFSq_IIuOossvFgJs7BuYINdKMFrQDM?usp=sharing
 
 
 ## Overview
