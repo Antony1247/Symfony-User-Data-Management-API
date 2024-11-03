@@ -16,8 +16,7 @@ This project provides a set of APIs to manage user data within a Symfony applica
 - [Installation](#installation)
 - [Usage](#usage)
 - [Data.csv File](#datacsv-file)
-- [Email Notification](#email-notification)
-- [License](#license)
+- [Asynchronous Email Notifications](#asynchronous-email-notifications)
 
 ## Technologies
 
@@ -152,9 +151,22 @@ Jane Smith,jane.smith@example.com,janesmith,456 Elm St,ADMIN
 ...
 ```
 
-## Email Notification
+## Asynchronous Email Notifications
 
-- The system sends an asynchronous email notification to each user upon successful data storage.
-- Ensure email credentials are configured in the `.env` file for proper functioning.
+This project implements an asynchronous email notification system using Symfony's Messenger component. Users receive email notifications upon successful data storage.
+
+### Features
+
+- **Asynchronous Processing**: Emails are sent in the background, allowing the application to operate without delays during data storage.
+- **Message Handler**: Utilizes a message handler to manage email notifications efficiently.
+
+### Configuration
+
+#### Environment Variables
+
+To configure email credentials, update the `.env` file with your SMTP server details:
+
+```dotenv
+MAILER_DSN=smtp://username:password@smtp.example.com:port
 
 
